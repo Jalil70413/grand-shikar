@@ -3,16 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luxury Hotel | Home</title>
+  <title>Grand Shikaar Parks and Resorts | Home</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
       --primary: #111;
       --secondary: #fff;
       --accent: #c8a46c;
+      --dark-bg: #0a0a0a;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,50 +29,78 @@
       background: #000;
       line-height: 1.6;
     }
+    
+    h1, h2, h3, h4, .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
 
-    /* HEADER */
+    /* HEADER - From Services Page */
     header {
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      background: rgba(0,0,0,0.5);
-      background:var(--accent);
+      background: var(--accent);
       backdrop-filter: blur(6px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-
-    .nav {
+    
+    .navbar {
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
       padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: relative;
     }
-
-    .logo {
+    
+    .navbar-brand {
       font-family: 'Playfair Display', serif;
+      font-weight: 600;
       font-size: 22px;
       letter-spacing: 1px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-
-    nav ul li { position: relative; }
-
-    nav ul li a {
-      text-decoration: none;
+      padding: 0;
       color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 10px;
+    }
+        
+    /* NAVIGATION MENU */
+    .navbar-nav {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 30px;
+      position: static;
+    }
+    
+    .nav-item {
+      position: static;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: #fff !important;
       font-size: 13px;
       letter-spacing: 1px;
+      padding: 8px 0 !important;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      display: block;
     }
-
-    /* MEGA MENU */
+    
+    .nav-link:hover, .nav-link.active {
+      color: #fff !important;
+      border-bottom: 2px solid #fff;
+    }
+        
+    /* MEGA MENU - From Services Page */
     .mega-menu {
       position: absolute;
       top: 100%;
@@ -79,28 +113,34 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
       border-top: 1px solid rgba(255,255,255,0.1);
+      z-index: 1001;
     }
-
-    nav ul li:hover .mega-menu { display: grid; }
-
+    
+    .nav-item.dropdown:hover .mega-menu { 
+      display: grid; 
+    }
+    
     .mega-menu h4 {
       font-family: 'Playfair Display', serif;
       font-size: 16px;
       margin-bottom: 15px;
       color: var(--accent);
     }
-
+    
     .mega-menu a {
       display: block;
       font-size: 13px;
-      color: #ccc;
+      color: #ccc !important;
       text-decoration: none;
       margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+    
+    .mega-menu a:hover { 
+      color: #fff !important; 
     }
 
-    .mega-menu a:hover { color: #fff; }
-
-    /* HERO */
+    /* HERO SECTION - From Homepage but Adjusted */
     .hero {
       position: relative;
       height: 100vh;
@@ -110,16 +150,17 @@
       justify-content: center;
       text-align: center;
       padding: 20px;
-      margin-bottom: 80px; /* FS-style space after hero */
+      margin-bottom: 80px;
+      padding-top: 100px;
     }
-
+    
     .hero-bg {
       position: absolute;
       inset: 0;
       overflow: hidden;
       z-index: -2;
     }
-
+    
     .hero-bg img {
       width: 100%;
       height: 100%;
@@ -127,7 +168,7 @@
       transform: scale(1);
       transition: transform 0.2s linear;
     }
-
+    
     .hero::after {
       content: '';
       position: absolute;
@@ -135,7 +176,7 @@
       background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6));
       z-index: -1;
     }
-
+    
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: 52px;
@@ -143,14 +184,14 @@
       margin-bottom: 15px;
       letter-spacing: 1px;
     }
-
+    
     .hero p {
       font-size: 15px;
       letter-spacing: 2px;
       margin-bottom: 30px;
     }
-
-    /* BOOKING BAR */
+    
+    /* BOOKING BAR - From Homepage */
     .booking-bar {
       position: absolute;
       bottom: 60px;
@@ -164,7 +205,7 @@
       align-items: center;
       border: 1px solid rgba(255,255,255,0.15);
     }
-
+    
     .booking-bar.sticky {
       position: fixed;
       top: 70px;
@@ -172,24 +213,24 @@
       z-index: 999;
       animation: slideDown .4s ease;
     }
-
+    
     @keyframes slideDown {
       from { transform: translate(-50%, -20px); opacity: 0; }
       to { transform: translate(-50%, 0); opacity: 1; }
     }
-
+    
     .booking-group {
       display: flex;
       flex-direction: column;
       font-size: 11px;
       letter-spacing: 1px;
     }
-
+    
     .booking-group label {
       color: #aaa;
       margin-bottom: 6px;
     }
-
+    
     .booking-group input,
     .booking-group select {
       background: transparent;
@@ -201,7 +242,7 @@
       outline: none;
       min-width: 140px;
     }
-
+    
     .booking-btn {
       background: var(--accent);
       color: #000;
@@ -211,8 +252,8 @@
       letter-spacing: 2px;
       cursor: pointer;
     }
-
-    /* FS EDITORIAL SECTION (IMAGE WITH OVERLAY TEXT) */
+    
+    /* FS EDITORIAL SECTION */
     .fs-hero {
       position: relative;
       min-height: 110vh;
@@ -222,25 +263,19 @@
       align-items: center;
       justify-content: center;
     }
-
+    
     .fs-hero-media {
       position: absolute;
       inset: 0;
       z-index: 0;
     }
-
+    
     .fs-hero-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-    .fs-hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    
     .fs-hero::after {
       content: '';
       position: absolute;
@@ -250,19 +285,19 @@
         rgba(0,0,0,0.25) 40%,
         rgba(0,0,0,0.65) 100%
       );
-      z-index: 1; /* sits between image and text */
+      z-index: 1;
     }
-
+    
     .fs-hero-content {
       position: relative;
       max-width: 460px;
       width: 100%;
-      z-index: 2; /* ensure text overlays image */
+      z-index: 2;
       padding: 70px 0;
       overflow-wrap: break-word;
       word-wrap: break-word;
     }
-
+    
     .fs-eyebrow {
       font-size: 11px;
       letter-spacing: 2px;
@@ -270,20 +305,20 @@
       display: block;
       margin-bottom: 12px;
     }
-
+    
     .fs-hero-content h2 {
       font-family: 'Playfair Display', serif;
       font-size: 42px;
       font-weight: 400;
       margin-bottom: 18px;
     }
-
+    
     .fs-hero-content p {
       font-size: 14px;
       color: #ddd;
       margin-bottom: 22px;
     }
-
+    
     .fs-link {
       font-size: 12px;
       letter-spacing: 2px;
@@ -292,7 +327,7 @@
       border-bottom: 1px solid var(--accent);
       padding-bottom: 4px;
     }
-
+    
     /* SECTIONS */
     section {
       padding: 90px 20px;
@@ -301,21 +336,21 @@
       transform: translateY(40px);
       transition: all .9s ease;
     }
-
+    
     .container { max-width: 1200px; margin: auto; }
-
+    
     .section-title {
       font-family: 'Playfair Display', serif;
       font-size: 36px;
       text-align: center;
       margin-bottom: 50px;
     }
-
+    
     /* FS DESTINATIONS SLIDER */
     .fs-destinations-slider {
-      opacity: 1; /* ensure visible */
+      opacity: 1;
     }
-
+    
     .fs-destinations-track {
       display: flex;
       gap: 30px;
@@ -323,9 +358,9 @@
       padding: 40px 40px 10px;
       scroll-snap-type: x mandatory;
     }
-
+    
     .fs-destinations-track::-webkit-scrollbar { display: none; }
-
+    
     .fs-destination-slide {
       position: relative;
       min-width: 320px;
@@ -336,16 +371,16 @@
       text-decoration: none;
       color: #fff;
     }
-
+    
     .fs-destination-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .8s ease;
     }
-
+    
     .fs-destination-slide:hover img { transform: scale(1.08); }
-
+    
     .fs-destination-overlay {
       position: absolute;
       inset: 0;
@@ -354,25 +389,25 @@
       align-items: flex-end;
       padding: 24px;
     }
-
+    
     .fs-destination-overlay h3 {
       font-family: 'Playfair Display', serif;
       font-size: 26px;
       font-weight: 400;
     }
-
+    
     /* FS FEATURED PROPERTIES */
     .fs-featured {
-      opacity: 1; /* override global section fade */
+      opacity: 1;
     }
-
+    
     .fs-tabs {
       display: flex;
       justify-content: center;
       gap: 30px;
       margin: 40px 0 60px;
     }
-
+    
     .fs-tab {
       background: none;
       border: none;
@@ -383,11 +418,11 @@
       padding-bottom: 8px;
       position: relative;
     }
-
+    
     .fs-tab.active {
       color: #fff;
     }
-
+    
     .fs-tab.active::after {
       content: '';
       position: absolute;
@@ -397,17 +432,17 @@
       height: 1px;
       background: var(--accent);
     }
-
+    
     .fs-tab-panels { overflow: hidden; }
-
+    
     .fs-panel {
       display: none;
     }
-
+    
     .fs-panel.active {
       display: block;
     }
-
+    
     .fs-featured-track {
       display: flex;
       gap: 30px;
@@ -415,9 +450,9 @@
       padding: 0 40px 10px;
       scroll-snap-type: x mandatory;
     }
-
+    
     .fs-featured-track::-webkit-scrollbar { display: none; }
-
+    
     .fs-featured-card {
       min-width: 340px;
       height: 460px;
@@ -425,16 +460,16 @@
       position: relative;
       overflow: hidden;
     }
-
+    
     .fs-featured-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .8s ease;
     }
-
+    
     .fs-featured-card:hover img { transform: scale(1.08); }
-
+    
     .fs-featured-info {
       position: absolute;
       left: 0;
@@ -443,94 +478,217 @@
       padding: 22px;
       background: linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,0));
     }
-
+    
     .fs-featured-info h3 {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
       font-weight: 400;
       margin-bottom: 6px;
     }
-
+    
     .fs-featured-info p {
       font-size: 12px;
       color: #ccc;
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .card { background: #111; overflow: hidden; }
-
-    .card img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .card:hover img { transform: scale(1.08); }
-
-    .card-content { padding: 20px; }
-
-    .card-content h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .card-content p { font-size: 13px; color: #ccc; }
-
+    
+    /* FOOTER - From Services Page */
     footer {
       background: #0a0a0a;
-      padding: 40px 20px;
+      padding: 60px 0 30px;
       text-align: center;
-      font-size: 12px;
-      color: #888;
+      margin-top: 80px;
     }
-
-    @media(max-width: 900px) {
-      nav ul { display: none; }
-      .booking-bar { width: 90%; flex-wrap: wrap; }
-      .hero h1 { font-size: 36px; }
-      .fs-hero { min-height: 75vh; padding: 10vh 0; }
-      .fs-hero-content { margin-left: 6%; margin-right: 6%; padding: 40px 0; }
-      .fs-hero-content h2 { font-size: 32px; }
-    }
-      .booking-bar { width: 90%; flex-wrap: wrap; }
-      .hero h1 { font-size: 36px; }
-      .fs-hero { height: 70vh; }
-      .fs-hero-content { left: 6%; right: 6%; max-width: none; }
-      .fs-hero-content h2 { font-size: 32px; }
     
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      font-size: 12px;
+      color: #666;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 30px;
+      margin-top: 30px;
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media(max-width: 992px) {
+      .navbar-collapse {
+        background: rgba(0,0,0,0.95);
+        padding: 20px;
+        margin-top: 10px;
+      }
+      
+      .mega-menu {
+        position: static;
+        width: 100%;
+        transform: none;
+        display: none !important;
+      }
+      
+      .nav-item.dropdown:hover .mega-menu { 
+        display: none !important; 
+      }
+      
+      .booking-bar { 
+        width: 90%; 
+        flex-wrap: wrap; 
+        bottom: 30px;
+      }
+      
+      .hero h1 { 
+        font-size: 36px; 
+      }
+      
+      .fs-hero { 
+        min-height: 75vh; 
+        padding: 10vh 0; 
+      }
+      
+      .fs-hero-content { 
+        padding: 40px 20px; 
+      }
+      
+      .fs-hero-content h2 { 
+        font-size: 32px; 
+      }
+      
+      .fs-destinations-track,
+      .fs-featured-track {
+        padding: 40px 20px 10px;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .section-title {
+        font-size: 32px;
+      }
+    }
+    
+    @media(max-width: 768px) {
+      .booking-bar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      .booking-group {
+        width: 100%;
+      }
+      
+      .booking-group input,
+      .booking-group select {
+        min-width: 100%;
+      }
+      
+      .hero h1 { 
+        font-size: 32px; 
+      }
+      
+      .fs-hero-content h2 { 
+        font-size: 28px; 
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+      
+      .fs-tabs {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      
+      .fs-destination-slide,
+      .fs-featured-card {
+        min-width: 280px;
+      }
+    }
+    
+    @media(max-width: 480px) {
+      .hero h1 { 
+        font-size: 28px; 
+      }
+      
+      .hero p {
+        font-size: 13px;
+      }
+      
+      .fs-hero-content h2 { 
+        font-size: 24px; 
+      }
+      
+      .fs-hero-content p {
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 <body>
 
+<!-- HEADER - From Services Page -->
 <header>
-  <div class="nav">
-    <div class="logo">Grand Shikar</div>
-    <nav>
-      <ul>
-        <li>
-          <a href="#">Hotels & Resorts</a>
-          <div class="mega-menu">
-            <div><h4>Europe</h4><a href="#">Paris</a><a href="#">London</a></div>
-            <div><h4>Asia</h4><a href="#">Bali</a><a href="#">Tokyo</a></div>
-            <div><h4>Americas</h4><a href="#">New York</a><a href="#">Toronto</a></div>
-            <div><h4>Middle East</h4><a href="#">Dubai</a><a href="#">Doha</a></div>
-          </div>
-        </li>
-        <li><a href="#">Residences</a></li>
-        <li><a href="#">Experiences</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
-  </div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        GRAND SHIKAAR
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span style="color: white; font-size: 24px;">☰</span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown position-static">
+            <a class="nav-link dropdown-toggle" href="#" role="button">
+              Hotels & Resorts
+            </a>
+            <div class="mega-menu">
+              <div><h4>Europe</h4><a href="#">Paris</a><a href="#">London</a></div>
+              <div><h4>Asia</h4><a href="#">Bali</a><a href="#">Tokyo</a></div>
+              <div><h4>Americas</h4><a href="#">New York</a><a href="#">Toronto</a></div>
+              <div><h4>Middle East</h4><a href="#">Dubai</a><a href="#">Doha</a></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Residences</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
+<!-- HERO SECTION -->
 <section class="hero">
   <div class="hero-bg">
     <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80" alt="Luxury Hotel Hero"> 
@@ -547,8 +705,6 @@
     <div class="booking-group"><label>GUESTS</label><select><option>2 Adults</option></select></div>
     <button class="booking-btn">CHECK RATES</button>
   </form>
-</div>
-</div>
 </section>
 
 <section class="fs-hero">
@@ -557,18 +713,16 @@
     <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=2200&q=80" alt="Luxury Experience">
   </div>
 
-  <!-- Inner Content Wrapper (FS editorial width) -->
-  <div class="fs-hero-inner">
-    <div class="fs-hero-content">
-      <span class="fs-eyebrow">FOUR SEASONS HOTELS & RESORTS</span>
-      <h2>Find Your Next Extraordinary Experience</h2>
-      <p>Discover a collection of luxury hotels and resorts in the world’s most captivating destinations. From iconic cities to secluded retreats, each Four Seasons property offers <br/>personalized service, refined comfort and unforgettable moments.</p>
-      <a href="#" class="fs-link">EXPLORE DESTINATIONS</a>
-    </div>
+  <!-- Inner Content Wrapper -->
+  <div class="fs-hero-content">
+    <span class="fs-eyebrow">FOUR SEASONS HOTELS & RESORTS</span>
+    <h2>Find Your Next Extraordinary Experience</h2>
+    <p>Discover a collection of luxury hotels and resorts in the world's most captivating destinations. From iconic cities to secluded retreats, each Four Seasons property offers personalized service, refined comfort and unforgettable moments.</p>
+    <a href="#" class="fs-link">EXPLORE DESTINATIONS</a>
   </div>
 </section>
 
-<!-- FS DESTINATIONS SLIDER (FOUR SEASONS STYLE) -->
+<!-- FS DESTINATIONS SLIDER -->
 <section class="fs-destinations-slider">
   <div class="container">
     <span class="fs-eyebrow" style="display:block;text-align:center;margin-bottom:14px;">DESTINATIONS</span>
@@ -595,8 +749,7 @@
   </div>
 </section>
 
-
-<!-- FS FEATURED PROPERTIES (TABS + SLIDER) -->
+<!-- FS FEATURED PROPERTIES -->
 <section class="fs-featured">
   <div class="container">
     <span class="fs-eyebrow" style="display:block;text-align:center;margin-bottom:14px;">FEATURED PROPERTIES</span>
@@ -663,9 +816,27 @@
   </div>
 </section>
 
-<footer>© 2025 Luxury Hotel Group. All Rights Reserved.</footer>
+<!-- FOOTER - From Services Page -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="#">Hotels & Resorts</a>
+      <a href="#">Residences</a>
+      <a href="services.html">Services</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 Grand Shikaar Parks & Resorts. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+  // Booking bar scroll effect
   const bookingBar = document.querySelector('.booking-bar');
   const hero = document.querySelector('.hero');
   const heroBg = document.querySelector('.hero-bg');
@@ -680,6 +851,7 @@
     heroBg.querySelector('img').style.transform = `scale(${scale})`;
   });
 
+  // Section reveal animation
   const sections = document.querySelectorAll('section');
   const reveal = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -726,6 +898,36 @@
       // Reset horizontal scroll
       const activeTrack = document.querySelector(`#${target} .fs-featured-track`);
       if (activeTrack) activeTrack.scrollLeft = 0;
+    });
+  });
+
+  // Handle mega menu on mobile
+  document.addEventListener('DOMContentLoaded', function() {
+    const megaMenuToggle = document.querySelector('.dropdown-toggle');
+    const megaMenu = document.querySelector('.mega-menu');
+    
+    if (window.innerWidth < 992) {
+      megaMenuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        megaMenu.style.display = megaMenu.style.display === 'grid' ? 'none' : 'grid';
+      });
+    }
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if(targetId === '#') return;
+
+      const targetElement = document.querySelector(targetId);
+      if(targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
     });
   });
 </script>
