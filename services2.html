@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Shikaar Parks and Resorts - 101 Group</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #111;
+            --secondary: #fff;
+            --accent: #c8a46c;
+            --dark-bg: #0a0a0a;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            background: #000;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        /* HEADER */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(6px);
+        }
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 20px;
+            position: relative;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 22px;
+            letter-spacing: 1px;
+            padding: 0;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand img {
+            height: 50px;
+            margin-right: 10px;
+        }
+            
+        /* NAVIGATION MENU */
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+            position: static;
+        }
+        .nav-item {
+            position: static;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #fff !important;
+            font-size: 13px;
+            letter-spacing: 1px;
+            padding: 8px 0 !important;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #fff !important;
+            border-bottom: 2px solid #fff;
+        }
+            
+        /* UPDATED MEGA MENU - Same position as services page */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            background: rgba(0,0,0,0.95);
+            padding: 40px;
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            z-index: 1001;
+        }
+        .nav-item.dropdown:hover .mega-menu { 
+            display: grid; 
+        }
+        .mega-menu h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        .mega-menu a {
+            display: block;
+            font-size: 13px;
+            color: #ccc !important;
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+        .mega-menu a:hover { 
+            color: #fff !important; 
+        }
+        
+        /* HERO SECTION */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), 
+                        url('images/hero-image.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            margin-bottom: 80px;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #ddd;
+            letter-spacing: 1px;
+        }
+        .btn-cta {
+            background-color: var(--accent);
+            color: #000;
+            border: none;
+            padding: 14px 35px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .btn-cta:hover {
+            background-color: #d4b57d;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* MAIN CONTENT */
+        .section-padding {
+            padding: 100px 0;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+        
+        /* PROJECT FEATURES SECTION */
+        .project-features-section {
+            position: relative;
+            padding: 80px 0 0;
+            margin-bottom: 100px;
+        }
+        .project-features-content {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .features-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .features-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+        }
+        
+        /* PROJECT FEATURES SLIDER */
+        .features-slider-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            margin-top: 60px;
+        }
+        .features-slider {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+        }
+        .slide-content {
+            max-width: 800px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .slide-description {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.9);
+        }
+        .slide-badge {
+            display: inline-block;
+            background: rgba(200, 164, 108, 0.2);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--accent) !important;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+        }
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .swiper-pagination-bullet {
+            background: #fff;
+            opacity: 0.5;
+            width: 12px;
+            height: 12px;
+        }
+        .swiper-pagination-bullet-active {
+            background: var(--accent);
+            opacity: 1;
+        }
+        
+        /* UPDATED FEATURED PROPERTIES SECTION - Clean Design */
+        .featured-properties-section {
+            padding: 100px 0;
+            background: #2b1c10;
+            color: #fff;
+        }
+        
+        .featured-properties-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .featured-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .featured-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .featured-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .property-categories {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            background: transparent;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            padding: 12px 0;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            color: #fff;
+        }
+        
+        .category-btn.active:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 1200px) {
+            .properties-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .properties-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+        
+        .property-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .property-image-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .property-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .property-card:hover .property-image {
+            transform: scale(1.08);
+        }
+        
+        .property-content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .property-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .property-description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+        
+        .property-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 30px;
+            background: rgba(200, 164, 108, 0.2);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        
+        .property-button:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(200, 164, 108, 0.2);
+        }
+        
+        .property-button i {
+            transition: transform 0.3s ease;
+        }
+        
+        .property-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        .view-all-link {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            padding: 14px 35px;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            background: transparent;
+            text-transform: uppercase;
+        }
+        
+        .view-all-btn:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(200, 164, 108, 0.2);
+        }
+        
+        .view-all-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .view-all-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Property categories display */
+        .property-category {
+            display: none;
+        }
+        
+        .property-category.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* FULL SCREEN VIDEO SECTION */
+        .video-section {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+            background: #000;
+            margin-top: 80px;
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .video-bg.playing {
+            opacity: 1;
+        }
+        .video-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        .video-poster.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .play-button-container {
+            text-align: center;
+            z-index: 2;
+        }
+        .play-button {
+            width: 100px;
+            height: 100px;
+            background: rgba(200, 164, 108, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            margin: 0 auto 30px;
+        }
+        .play-button:hover {
+            background: rgba(200, 164, 108, 1);
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .play-button i {
+            margin-left: 5px;
+        }
+        .video-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+        }
+        .video-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .video-controls {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .video-controls.visible {
+            opacity: 1;
+        }
+        .control-btn {
+            background: rgba(0,0,0,0.5);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 25px;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+        .control-btn:hover {
+            background: var(--accent);
+            color: #000;
+        }
+        .control-btn i {
+            margin-right: 8px;
+        }
+        
+        /* AWARD SECTION */
+        .award-section {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        .award-badge {
+            background-color: rgba(200, 164, 108, 0.2);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+        .award-badge i {
+            font-size: 3rem;
+            color: var(--accent);
+        }
+        
+        /* CONTACT FORM */
+        .contact-form {
+            background: rgba(255,255,255,0.03);
+            padding: 60px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        @media (max-width: 768px) {
+            .contact-form { padding: 40px 25px; }
+        }
+        .form-control {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+        .form-control:focus {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.25rem rgba(200, 164, 108, 0.25);
+            color: #fff;
+        }
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #0a0a0a;
+            padding: 60px 0 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        .copyright {
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            margin-top: 30px;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                background: rgba(0,0,0,0.95);
+                padding: 20px;
+                margin-top: 10px;
+            }
+            .mega-menu {
+                position: static;
+                width: 100%;
+                transform: none;
+                display: none !important;
+            }
+            .nav-item.dropdown:hover .mega-menu { 
+                display: none !important; 
+            }
+            .hero-title { 
+                font-size: 2.8rem; 
+            }
+            .features-title {
+                font-size: 2.5rem;
+            }
+            .features-description {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+            .slide-title {
+                font-size: 2.5rem;
+            }
+            .slide-description {
+                font-size: 1.1rem;
+            }
+            .video-title {
+                font-size: 2rem;
+            }
+            .video-subtitle {
+                font-size: 1rem;
+            }
+            .play-button {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .features-slider-section {
+                height: 80vh;
+                min-height: 600px;
+            }
+            .featured-title {
+                font-size: 2.2rem;
+            }
+            .properties-grid {
+                gap: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-title { 
+                font-size: 2.2rem; 
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .features-title {
+                font-size: 2rem;
+            }
+            .features-description {
+                font-size: 1rem;
+            }
+            .slide-title {
+                font-size: 2rem;
+            }
+            .slide-description {
+                font-size: 1rem;
+            }
+            .video-title {
+                font-size: 1.8rem;
+            }
+            .video-subtitle {
+                font-size: 0.9rem;
+            }
+            .grid-title {
+                font-size: 1.6rem;
+            }
+            .image-grid-item {
+                height: 300px;
+            }
+            .video-section {
+                height: 80vh;
+                min-height: 500px;
+            }
+            .features-slider-section {
+                height: 70vh;
+                min-height: 500px;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .project-features-content {
+                margin-bottom: 50px;
+            }
+            .hero-section {
+                margin-bottom: 50px;
+            }
+            .featured-title {
+                font-size: 1.8rem;
+            }
+            .featured-subtitle {
+                font-size: 1rem;
+            }
+            .property-categories {
+                gap: 20px;
+            }
+            .category-btn {
+                font-size: 13px;
+            }
+            .property-title {
+                font-size: 1.4rem;
+                top: 20px;
+            }
+        }
+        @media (max-width: 576px) {
+            .project-features-section {
+                margin-bottom: 70px;
+            }
+            .video-section {
+                height: 70vh;
+                min-height: 400px;
+            }
+            .play-button {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+            .features-slider-section {
+                height: 60vh;
+                min-height: 400px;
+            }
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+            .property-title {
+                font-size: 1.2rem;
+            }
+            .property-description {
+                font-size: 0.85rem;
+            }
+            .property-button {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="GSR-White.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span style="color: white; font-size: 24px;">☰</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown position-static">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">
+                                Hotels & Resorts
+                            </a>
+                            <div class="mega-menu">
+                                <div><h4>Europe</h4><a href="#">Paris</a><a href="#">London</a></div>
+                                <div><h4>Asia</h4><a href="#">Bali</a><a href="#">Tokyo</a></div>
+                                <div><h4>Americas</h4><a href="#">New York</a><a href="#">Toronto</a></div>
+                                <div><h4>Middle East</h4><a href="#">Dubai</a><a href="#">Doha</a></div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Residences</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="services.html">Services</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">GRAND SHIKAAR PARKS & RESORTS</h1>
+                    <p class="hero-subtitle">
+                        An unforgettable escapade that will leave everlasting memories and let you experience adventures like never before. It is a retreat that not only lets you relax but also rejuvenates, leaving a mark on your soul.
+                    </p>
+                    <a href="#contact" class="btn btn-cta btn-lg">Begin Your Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT FEATURES SECTION -->
+    <section class="project-features-section">
+        <div class="project-features-content">
+            <h2 class="features-title">Project Features</h2>
+            <p class="features-description">
+                Nestled amidst a picturesque landscape of tranquil lakes, these chalets offer direct access to the water, with spacious decks that open up to the lakeside, creating an idyllic setting for the perfect getaway. Phase 01 of this distinguished resort boasts a collection of 100 thoughtfully crafted chalets. A mere 40-minute drive from the bustling heart of Islamabad, this sanctuary offers you an opportunity to experience a paradise amid the wild.
+            </p>
+        </div>
+        
+        <!-- PROJECT FEATURES SLIDER -->
+        <div class="features-slider-section">
+            <div class="swiper features-slider">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1: Lakeside Chalets -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Lakeside Chalets" class="slide-image">
+                        <div class="slide-overlay">
+                            <div class="slide-content">
+                                <h3 class="slide-title">Lakeside Luxury Chalets</h3>
+                                <p class="slide-description">
+                                    100 thoughtfully crafted chalets offering direct lake access with spacious decks. Each chalet is designed to provide the perfect balance of luxury and nature.
+                                </p>
+                                <div class="slide-badge">PHASE 01 COMPLETED</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2: Natural Landscape -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Natural Landscape" class="slide-image">
+                        <div class="slide-overlay">
+                            <div class="slide-content">
+                                <h3 class="slide-title">Picturesque Natural Setting</h3>
+                                <p class="slide-description">
+                                    Nestled amidst tranquil lakes and lush greenery, just 40 minutes from Islamabad. Experience a sanctuary that harmonizes luxury living with natural beauty.
+                                </p>
+                                <div class="slide-badge">40 MINUTES FROM ISLAMABAD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UPDATED: FEATURED PROPERTIES SECTION -->
+    <section class="featured-properties-section">
+        <div class="featured-properties-container">
+            <div class="featured-header">
+                <h2 class="featured-title">Featured Properties</h2>
+                <p class="featured-subtitle">
+                    Discover our most inspiring properties around the world, where luxury meets nature and adventure awaits at every turn.
+                </p>
+                
+                <div class="property-categories">
+                    <button class="category-btn active" data-category="residences">RESIDENCES</button>
+                    <button class="category-btn" data-category="hotels">HOTELS & RESORTS</button>
+                    <button class="category-btn" data-category="villas">VILLA RENTALS</button>
+                </div>
+            </div>
+            
+            <!-- RESIDENCES CATEGORY -->
+            <div class="property-category active" id="category-residences">
+                <div class="properties-grid">
+                    <!-- Residence 1 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2080&q=80" 
+                                 alt="Maui at Wailea" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">MAUI AT WAILEA</h3>
+                            <p class="property-description">
+                                Luxury residence with tropical garden views and private beach access in Hawaii.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Residence 2 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Swiss Alps Residence" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">ALPINE RETREAT</h3>
+                            <p class="property-description">
+                                Mountain luxury residence with ski-in/ski-out access and breathtaking alpine views.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Residence 3 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="New York Penthouse" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">MANHATTAN PENTHOUSE</h3>
+                            <p class="property-description">
+                                Sky-high luxury with panoramic city views in the heart of New York City.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Residence 4 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="London Townhouse" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">CHELSEA TOWNHOUSE</h3>
+                            <p class="property-description">
+                                Classic Georgian townhouse with modern luxury in London's most prestigious neighborhood.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- HOTELS & RESORTS CATEGORY -->
+            <div class="property-category" id="category-hotels">
+                <div class="properties-grid">
+                    <!-- Hotel 1 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Costa Rica Peninsula" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">COSTA RICA PENINSULA</h3>
+                            <p class="property-description">
+                                Find your "Pura Vida" at our beachfront resort where adventure and relaxation meet.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hotel 2 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="O'ahu at Ko Olina" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">O'AHU AT KO OLINA</h3>
+                            <p class="property-description">
+                                Beachfront resort with panoramic ocean views and world-class amenities in Hawaii.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hotel 3 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Anguilla Resort" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">ANGUILLA RESORT</h3>
+                            <p class="property-description">
+                                Private island retreat with pristine beaches and crystal-clear turquoise waters.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hotel 4 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Maldives Resort" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">MALDIVES OVERWATER</h3>
+                            <p class="property-description">
+                                Iconic overwater bungalows with direct lagoon access in the Maldives.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- VILLA RENTALS CATEGORY -->
+            <div class="property-category" id="category-villas">
+                <div class="properties-grid">
+                    <!-- Villa 1 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Bali Villa" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">BALI JUNGLE VILLA</h3>
+                            <p class="property-description">
+                                Private villa surrounded by tropical jungle with infinity pool and rice field views.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Villa 2 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Tuscany Villa" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">TUSCANY VINEYARD VILLA</h3>
+                            <p class="property-description">
+                                Historic villa set amidst vineyards with panoramic views of the Tuscan countryside.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Villa 3 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Marrakech Villa" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">MARRAKECH RIAD</h3>
+                            <p class="property-description">
+                                Traditional Moroccan riad with courtyard, fountain, and intricate tile work.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Villa 4 -->
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            <img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Phuket Villa" class="property-image">
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">PHUKET BEACH VILLA</h3>
+                            <p class="property-description">
+                                Beachfront villa with private pool and direct access to white sand beaches.
+                            </p>
+                            <a href="#" class="property-button">
+                                VIEW PROPERTY
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all-link">
+                <a href="#" class="view-all-btn">
+                    VIEW ALL PROPERTIES
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL SCREEN VIDEO SECTION -->
+    <section class="video-section">
+        <div class="video-container">
+            <!-- Demo Video for Grand Shikaar Parks & Resorts -->
+            <video class="video-bg" id="resortVideo" preload="metadata">
+                <source src="video/grand shikar.mp4" type="video/mp4">
+                <source src="video/grand shikar.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Video Poster with Centered Play Button -->
+            <div class="video-poster" id="videoPoster">
+                <div class="play-button-container">
+                    <button class="play-button" id="playButton">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <h2 class="video-title">Experience Grand Shikaar</h2>
+                    <p class="video-subtitle">Watch our resort demo video to immerse yourself in the luxury and natural beauty of Pakistan's premier destination</p>
+                </div>
+            </div>
+            
+            <!-- Video Controls (Hidden by default, shown when video plays) -->
+            <div class="video-controls" id="videoControls">
+                <button class="control-btn" id="pauseBtn">
+                    <i class="fas fa-pause"></i> Pause
+                </button>
+                <button class="control-btn" id="muteBtn">
+                    <i class="fas fa-volume-up"></i> Mute
+                </button>
+                <button class="control-btn" id="replayBtn">
+                    <i class="fas fa-redo"></i> Replay
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AWARD SECTION -->
+    <section class="section-padding award-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <h2 class="section-title text-white">Award Winning Project</h2>
+                    <p class="lead mb-4" style="color: #eee; font-size: 1.2rem;">
+                        Grand Shikaar Parks and Resorts is Pakistan's first international award-winning ethical hunting reserve.
+                    </p>
+                    <p style="color: #ddd; font-size: 1.1rem;">
+                        It won <strong>South Asia's Best Leisure Project in 2024</strong> at the International Property Award Show (IPAS), gaining prestigious international recognition for its innovative design, sustainable practices, and exceptional concept.
+                    </p>
+                    <p class="mt-4" style="color: #ddd;">
+                        This landmark achievement highlights our commitment to creating world-class destinations that harmonize luxury with nature and ethical conservation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form">
+                        <h2 class="section-title text-center mb-4">Get Started on Your Journey Today</h2>
+                        <p class="text-center mb-5" style="color: rgba(255,255,255,0.7);">
+                            Once we receive your contact details, one of our dedicated team members will reach out to you with information about our premium real estate offerings.
+                        </p>
+                        <form id="journeyForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Email Address" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Phone Number">
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-control" required>
+                                        <option value="" disabled selected>Interest In...</option>
+                                        <option>Lake Side Chalets</option>
+                                        <option>Ethical Hunting Experience</option>
+                                        <option>Hunting Packages</option>
+                                        <option>Activities</option>
+                                        <option>General Information</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <textarea class="form-control" rows="5" placeholder="Your Message or Inquiry..."></textarea>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-cta btn-lg w-100">Submit Your Interest</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Hotels & Resorts</a>
+                <a href="#">Residences</a>
+                <a href="#">Services</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 101 Group - Grand Shikaar Parks & Resorts. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper Slider
+        const featuresSwiper = new Swiper('.features-slider', {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 1000,
+        });
+        
+        // Functional tabs for Featured Properties - FIXED
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const propertyCategories = document.querySelectorAll('.property-category');
+            
+            // Initialize by showing the active category
+            const activeCategory = document.querySelector('.category-btn.active');
+            if (activeCategory) {
+                const categoryId = activeCategory.getAttribute('data-category');
+                const activeElement = document.getElementById(`category-${categoryId}`);
+                if (activeElement) {
+                    activeElement.classList.add('active');
+                }
+            }
+            
+            // Add click event to category buttons
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get category from data attribute
+                    const category = this.getAttribute('data-category');
+                    
+                    // Hide all property categories
+                    propertyCategories.forEach(cat => {
+                        cat.classList.remove('active');
+                    });
+                    
+                    // Show selected category
+                    const selectedCategory = document.getElementById(`category-${category}`);
+                    if (selectedCategory) {
+                        selectedCategory.classList.add('active');
+                    }
+                });
+            });
+            
+            // Add hover effect for property cards
+            const propertyCards = document.querySelectorAll('.property-card');
+            propertyCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+        });
+        
+        // Video controls functionality
+        const resortVideo = document.getElementById('resortVideo');
+        const videoPoster = document.getElementById('videoPoster');
+        const playButton = document.getElementById('playButton');
+        const videoControls = document.getElementById('videoControls');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const replayBtn = document.getElementById('replayBtn');
+        
+        let isPlaying = false;
+        
+        // Play button click handler
+        if (playButton) {
+            playButton.addEventListener('click', function() {
+                resortVideo.play();
+                resortVideo.classList.add('playing');
+                videoPoster.classList.add('hidden');
+                videoControls.classList.add('visible');
+                isPlaying = true;
+                
+                // Change play button to pause when video is playing
+                pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+            });
+        }
+        
+        // Pause/Resume button
+        if (pauseBtn) {
+            pauseBtn.addEventListener('click', function() {
+                if (resortVideo.paused) {
+                    resortVideo.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                } else {
+                    resortVideo.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i> Play';
+                }
+            });
+        }
+        
+        // Mute/Unmute button
+        if (muteBtn) {
+            muteBtn.addEventListener('click', function() {
+                if (resortVideo.muted) {
+                    resortVideo.muted = false;
+                    this.innerHTML = '<i class="fas fa-volume-up"></i> Mute';
+                } else {
+                    resortVideo.muted = true;
+                    this.innerHTML = '<i class="fas fa-volume-mute"></i> Unmute';
+                }
+            });
+        }
+        
+        // Replay button
+        if (replayBtn) {
+            replayBtn.addEventListener('click', function() {
+                resortVideo.currentTime = 0;
+                resortVideo.play();
+                pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+            });
+        }
+        
+        // When video ends, show poster again
+        resortVideo.addEventListener('ended', function() {
+            resortVideo.classList.remove('playing');
+            videoPoster.classList.remove('hidden');
+            videoControls.classList.remove('visible');
+            isPlaying = false;
+        });
+        
+        // Simple form submission handler
+        document.getElementById('journeyForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! A dedicated team member will contact you shortly.');
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Handle mega menu on mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const megaMenuToggle = document.querySelector('.dropdown-toggle');
+            const megaMenu = document.querySelector('.mega-menu');
+            
+            if (window.innerWidth < 992) {
+                megaMenuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    megaMenu.style.display = megaMenu.style.display === 'grid' ? 'none' : 'grid';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
