@@ -12,6 +12,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Swiper CSS for slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <style>
     :root {
@@ -41,9 +43,7 @@
       width: 100%;
       top: 0;
       z-index: 1000;
-      /* background: var(--accent); */
       backdrop-filter: blur(6px);
-      /* border-bottom: 1px solid rgba(255,255,255,0.08); */
     }
     
     .navbar {
@@ -66,7 +66,7 @@
     }
     
     .navbar-brand img {
-      height: 50px;
+      height: 80px;
       margin-right: 10px;
     }
         
@@ -173,12 +173,12 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6));
+      background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1));
       z-index: -1;
     }
     
     .hero h1 {
-      font-family: 'Soal Display', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 52px;
       font-weight: 400;
       margin-bottom: 15px;
@@ -240,7 +240,7 @@
       padding: 6px 4px;
       font-size: 13px;
       outline: none;
-      min-width: 200px;
+      min-width: 150px;
     }
     
     .booking-btn {
@@ -294,9 +294,11 @@
       max-width: 460px;
       width: 100%;
       z-index: 2;
-      padding: 70px 0;
+      padding: 70px 20px;
       overflow-wrap: break-word;
       word-wrap: break-word;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .fs-eyebrow {
@@ -308,7 +310,7 @@
     }
     
     .fs-hero-content h2 {
-      font-family: 'Soal Display', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 42px;
       font-weight: 400;
       margin-bottom: 18px;
@@ -347,41 +349,67 @@
       margin-bottom: 50px;
     }
     
-    /* FS DESTINATIONS SLIDER */
-    .fs-destinations-slider {
-      opacity: 1;
+    /* SWIPER SLIDER STYLES */
+    .swiper {
+      width: 100%;
+      padding: 40px 0 60px !important;
     }
-    
-    .fs-destinations-track {
-      display: flex;
-      gap: 30px;
-      overflow-x: auto;
-      padding: 40px 40px 10px;
-      scroll-snap-type: x mandatory;
+
+    .swiper-wrapper {
+      padding-left: 40px;
     }
-    
-    .fs-destinations-track::-webkit-scrollbar { display: none; }
-    
+
+    .swiper-slide {
+      width: 320px !important;
+      height: 420px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: var(--accent) !important;
+      width: 40px !important;
+      height: 40px !important;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 20px !important;
+    }
+
+    .swiper-pagination-bullet {
+      background: #fff !important;
+      opacity: 0.5 !important;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--accent) !important;
+      opacity: 1 !important;
+    }
+
+    /* DESTINATION SLIDE */
     .fs-destination-slide {
       position: relative;
-      min-width: 320px;
-      height: 420px;
-      flex-shrink: 0;
-      scroll-snap-align: start;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       text-decoration: none;
       color: #fff;
+      display: block;
     }
-    
+
     .fs-destination-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .8s ease;
     }
-    
-    .fs-destination-slide:hover img { transform: scale(1.08); }
-    
+
+    .fs-destination-slide:hover img { 
+      transform: scale(1.08); 
+    }
+
     .fs-destination-overlay {
       position: absolute;
       inset: 0;
@@ -390,25 +418,25 @@
       align-items: flex-end;
       padding: 24px;
     }
-    
+
     .fs-destination-overlay h3 {
       font-family: 'Playfair Display', serif;
       font-size: 26px;
       font-weight: 400;
     }
-    
-    /* FS FEATURED PROPERTIES */
+
+    /* FS FEATURED PROPERTIES WITH SWIPER */
     .fs-featured {
       opacity: 1;
     }
-    
+
     .fs-tabs {
       display: flex;
       justify-content: center;
       gap: 30px;
       margin: 40px 0 60px;
     }
-    
+
     .fs-tab {
       background: none;
       border: none;
@@ -419,11 +447,11 @@
       padding-bottom: 8px;
       position: relative;
     }
-    
+
     .fs-tab.active {
       color: #fff;
     }
-    
+
     .fs-tab.active::after {
       content: '';
       position: absolute;
@@ -433,44 +461,48 @@
       height: 1px;
       background: var(--accent);
     }
-    
-    .fs-tab-panels { overflow: hidden; }
-    
+
+    .fs-tab-panels { 
+      overflow: hidden; 
+    }
+
     .fs-panel {
       display: none;
     }
-    
+
     .fs-panel.active {
       display: block;
     }
-    
-    .fs-featured-track {
-      display: flex;
-      gap: 30px;
-      overflow-x: auto;
-      padding: 0 40px 10px;
-      scroll-snap-type: x mandatory;
+
+    /* FEATURED PROPERTIES SLIDER */
+    .fs-featured-slider {
+      width: 100%;
+      padding: 0 40px;
     }
-    
-    .fs-featured-track::-webkit-scrollbar { display: none; }
-    
-    .fs-featured-card {
-      min-width: 340px;
+
+    .fs-featured-slider .swiper-slide {
+      width: 340px !important;
       height: 460px;
-      scroll-snap-align: start;
+    }
+
+    .fs-featured-card {
       position: relative;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
     }
-    
+
     .fs-featured-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .8s ease;
     }
-    
-    .fs-featured-card:hover img { transform: scale(1.08); }
-    
+
+    .fs-featured-card:hover img { 
+      transform: scale(1.08); 
+    }
+
     .fs-featured-info {
       position: absolute;
       left: 0;
@@ -479,19 +511,19 @@
       padding: 22px;
       background: linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,0));
     }
-    
+
     .fs-featured-info h3 {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
       font-weight: 400;
       margin-bottom: 6px;
     }
-    
+
     .fs-featured-info p {
       font-size: 12px;
       color: #ccc;
     }
-    
+
     /* FOOTER - From Services Page */
     footer {
       background: #0a0a0a;
@@ -575,9 +607,12 @@
         font-size: 32px; 
       }
       
-      .fs-destinations-track,
-      .fs-featured-track {
-        padding: 40px 20px 10px;
+      .swiper-wrapper {
+        padding-left: 20px;
+      }
+      
+      .fs-featured-slider {
+        padding: 0 20px;
       }
       
       .footer-links {
@@ -623,9 +658,14 @@
         flex-wrap: wrap;
       }
       
-      .fs-destination-slide,
-      .fs-featured-card {
-        min-width: 280px;
+      .swiper-slide,
+      .fs-featured-slider .swiper-slide {
+        width: 280px !important;
+      }
+      
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none !important;
       }
     }
     
@@ -644,6 +684,14 @@
       
       .fs-hero-content p {
         font-size: 13px;
+      }
+      
+      .swiper-wrapper {
+        padding-left: 15px;
+      }
+      
+      .fs-featured-slider {
+        padding: 0 15px;
       }
     }
   </style>
@@ -704,6 +752,15 @@
     <div class="booking-group"><label>CHECK IN</label><input type="date"></div>
     <div class="booking-group"><label>CHECK OUT</label><input type="date"></div>
     <div class="booking-group"><label>GUESTS</label><select><option>2 Adults</option></select></div>
+     <div class="booking-group">
+      <label>ROOMS</label>
+      <select class="form-select">
+        <option>1 Room</option>
+        <option>2 Rooms</option>
+        <option>3 Rooms</option>
+        <option>Suite</option>
+      </select>
+    </div>
     <button class="booking-btn">CHECK RATES</button>
   </form>
 </section>
@@ -716,44 +773,74 @@
 
   <!-- Inner Content Wrapper -->
   <div class="fs-hero-content">
-    <span class="fs-eyebrow">FOUR SEASONS HOTELS & RESORTS</span>
+    <span class="fs-eyebrow">GRAND SHIKAAR HOTELS & RESORTS</span>
     <h2>Find Your Next Extraordinary Experience</h2>
     <p>Discover a collection of luxury hotels and resorts in the world's most captivating destinations. From iconic cities to secluded retreats, each Four Seasons property offers personalized service, refined comfort and unforgettable moments.</p>
     <a href="#" class="fs-link">EXPLORE DESTINATIONS</a>
   </div>
 </section>
 
-<!-- FS DESTINATIONS SLIDER -->
+<!-- FS DESTINATIONS SLIDER - NOW USING SWIPER -->
 <section class="fs-destinations-slider">
   <div class="container">
     <span class="fs-eyebrow" style="display:block;text-align:center;margin-bottom:14px;">DESTINATIONS</span>
     <h2 class="section-title">Explore Our World</h2>
   </div>
 
-  <div class="fs-destinations-track">
-    <a class="fs-destination-slide" href="#">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" alt="Maldives">
-      <div class="fs-destination-overlay"><h3>Maldives</h3></div>
-    </a>
-    <a class="fs-destination-slide" href="#">
-      <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80" alt="Paris">
-      <div class="fs-destination-overlay"><h3>Paris</h3></div>
-    </a>
-    <a class="fs-destination-slide" href="#">
-      <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1600&q=80" alt="Bali">
-      <div class="fs-destination-overlay"><h3>Bali</h3></div>
-    </a>
-    <a class="fs-destination-slide" href="#">
-      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80" alt="New York">
-      <div class="fs-destination-overlay"><h3>New York</h3></div>
-    </a>
+  <!-- Swiper Destinations Slider -->
+  <div class="swiper destinations-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <a class="fs-destination-slide" href="#">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" alt="Maldives">
+          <div class="fs-destination-overlay"><h3>Maldives</h3></div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a class="fs-destination-slide" href="#">
+          <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80" alt="Paris">
+          <div class="fs-destination-overlay"><h3>Paris</h3></div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a class="fs-destination-slide" href="#">
+          <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1600&q=80" alt="Bali">
+          <div class="fs-destination-overlay"><h3>Bali</h3></div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a class="fs-destination-slide" href="#">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80" alt="New York">
+          <div class="fs-destination-overlay"><h3>New York</h3></div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a class="fs-destination-slide" href="#">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80" alt="Prague">
+          <div class="fs-destination-overlay"><h3>Prague</h3></div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a class="fs-destination-slide" href="#">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1600&q=80" alt="London">
+          <div class="fs-destination-overlay"><h3>London</h3></div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    
+    <!-- Pagination dots -->
+    <div class="swiper-pagination"></div>
   </div>
 </section>
 
-<!-- FS FEATURED PROPERTIES -->
+<!-- FS FEATURED PROPERTIES - ALSO CONVERTED TO SWIPER -->
 <section class="fs-featured">
   <div class="container">
-    <span class="fs-eyebrow" style="display:block;text-align:center;margin-bottom:14px;">FEATURED PROPERTIES</span>
+    <span class="fs-eyebrow d-block text-center mb-3">FEATURED PROPERTIES</span>
     <h2 class="section-title">Exceptional Stays</h2>
 
     <div class="fs-tabs">
@@ -765,53 +852,143 @@
   </div>
 
   <div class="fs-tab-panels">
+    <!-- Popular Tab -->
     <div class="fs-panel active" id="popular">
-      <div class="fs-featured-track">
-        <article class="fs-featured-card">
-          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80" />
-          <div class="fs-featured-info"><h3>Maldives at Kuda Huraa</h3><p>North Malé Atoll</p></div>
-        </article>
-        <article class="fs-featured-card">
-          <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80" />
-          <div class="fs-featured-info"><h3>George V, Paris</h3><p>France</p></div>
-        </article>
-        <article class="fs-featured-card">
-          <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1600&q=80" />
-          <div class="fs-featured-info"><h3>Bali at Sayan</h3><p>Indonesia</p></div>
-        </article>
+      <div class="swiper featured-swiper" id="popular-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>Maldives at Kuda Huraa</h3><p>North Malé Atoll</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>George V, Paris</h3><p>France</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>Bali at Sayan</h3><p>Indonesia</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80" alt="Prague" />
+              <div class="fs-featured-info"><h3>Prague Grand</h3><p>Czech Republic</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
 
+    <!-- New & Noteworthy Tab -->
     <div class="fs-panel" id="new">
-      <div class="fs-featured-track">
-        <article class="fs-featured-card">
-          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1600&q=80" alt="London City" />
-          <div class="fs-featured-info"><h3>London at Park Lane</h3><p>United Kingdom</p></div>
-        </article>
-        <article class="fs-featured-card">
-          <img src="https://images.unsplash.com/photo-1498496294664-d9372eb521f3?auto=format&fit=crop&w=1600&q=80" alt="Dubai City" />
-          <div class="fs-featured-info"><h3>Dubai at Jumeirah</h3><p>United Arab Emirates</p></div>
-        </article>
-        <article class="fs-featured-card">
-          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80" alt="Prague City" />
-          <div class="fs-featured-info"><h3>Prague</h3><p>Czech Republic</p></div>
-        </article>
+      <div class="swiper featured-swiper" id="new-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1600&q=80" alt="London City" />
+              <div class="fs-featured-info"><h3>London at Park Lane</h3><p>United Kingdom</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1498496294664-d9372eb521f3?auto=format&fit=crop&w=1600&q=80" alt="Dubai City" />
+              <div class="fs-featured-info"><h3>Dubai at Jumeirah</h3><p>United Arab Emirates</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80" alt="Prague City" />
+              <div class="fs-featured-info"><h3>Prague</h3><p>Czech Republic</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1600&q=80" alt="Beach Resort" />
+              <div class="fs-featured-info"><h3>Seychelles Resort</h3><p>Indian Ocean</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
 
+    <!-- Resorts Tab -->
     <div class="fs-panel" id="resorts">
-      <div class="fs-featured-track">
-        <article class="fs-featured-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" /><div class="fs-featured-info"><h3>Bora Bora</h3><p>French Polynesia</p></div></article>
-        <article class="fs-featured-card"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1600&q=80" /><div class="fs-featured-info"><h3>Maldives Landaa</h3><p>Indian Ocean</p></div></article>
-        <article class="fs-featured-card"><img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1600&q=80" /><div class="fs-featured-info"><h3>Maui at Wailea</h3><p>Hawaii</p></div></article>
+      <div class="swiper featured-swiper" id="resorts-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>Bora Bora</h3><p>French Polynesia</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>Maldives Landaa</h3><p>Indian Ocean</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>Maui at Wailea</h3><p>Hawaii</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=80" alt="Caribbean" />
+              <div class="fs-featured-info"><h3>Caribbean Escape</h3><p>Barbados</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
 
+    <!-- Urban Retreats Tab -->
     <div class="fs-panel" id="urban">
-      <div class="fs-featured-track">
-        <article class="fs-featured-card"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80" /><div class="fs-featured-info"><h3>New York Downtown</h3><p>USA</p></div></article>
-        <article class="fs-featured-card"><img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=1600&q=80" /><div class="fs-featured-info"><h3>Tokyo at Marunouchi</h3><p>Japan</p></div></article>
-        <article class="fs-featured-card"><img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80" /><div class="fs-featured-info"><h3>Paris George V</h3><p>France</p></div></article>
+      <div class="swiper featured-swiper" id="urban-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>New York Downtown</h3><p>USA</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>Tokyo at Marunouchi</h3><p>Japan</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80" />
+              <div class="fs-featured-info"><h3>Paris George V</h3><p>France</p></div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="fs-featured-card">
+              <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1600&q=80" alt="London" />
+              <div class="fs-featured-info"><h3>London Shard</h3><p>United Kingdom</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
   </div>
@@ -835,6 +1012,8 @@
 
 <!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
   // Booking bar scroll effect
@@ -865,6 +1044,83 @@
 
   sections.forEach(sec => reveal.observe(sec));
 
+  // Initialize Swiper sliders
+  let destinationsSwiper = null;
+  let featuredSwipers = {};
+
+  function initSwipers() {
+    // Destinations Swiper
+    destinationsSwiper = new Swiper('.destinations-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 30,
+      loop: true,
+      centeredSlides: false,
+      grabCursor: true,
+      navigation: {
+        nextEl: '.destinations-swiper .swiper-button-next',
+        prevEl: '.destinations-swiper .swiper-button-prev',
+      },
+      pagination: {
+        el: '.destinations-swiper .swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1.2,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 'auto',
+          spaceBetween: 20,
+        },
+        992: {
+          slidesPerView: 'auto',
+          spaceBetween: 30,
+        }
+      }
+    });
+
+    // Featured Properties Swipers
+    const swiperConfig = {
+      slidesPerView: 'auto',
+      spaceBetween: 30,
+      loop: false,
+      centeredSlides: false,
+      grabCursor: true,
+      navigation: {
+        nextEl: '.featured-swiper .swiper-button-next',
+        prevEl: '.featured-swiper .swiper-button-prev',
+      },
+      pagination: {
+        el: '.featured-swiper .swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1.2,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 'auto',
+          spaceBetween: 20,
+        },
+        992: {
+          slidesPerView: 'auto',
+          spaceBetween: 30,
+        }
+      }
+    };
+
+    // Initialize all featured swipers
+    featuredSwipers.popular = new Swiper('#popular-swiper', swiperConfig);
+    featuredSwipers.new = new Swiper('#new-swiper', swiperConfig);
+    featuredSwipers.resorts = new Swiper('#resorts-swiper', swiperConfig);
+    featuredSwipers.urban = new Swiper('#urban-swiper', swiperConfig);
+  }
+
+  // Initialize swipers when DOM is loaded
+  document.addEventListener('DOMContentLoaded', initSwipers);
+
   /* FS FEATURED PROPERTIES TAB SWITCHING */
   const tabs = document.querySelectorAll('.fs-tab');
   const panels = document.querySelectorAll('.fs-panel');
@@ -889,16 +1145,19 @@
             panel.style.transition = 'opacity .6s ease, transform .6s ease';
             panel.style.opacity = 1;
             panel.style.transform = 'translateY(0)';
+            
+            // Update Swiper on tab change
+            if (featuredSwipers[target]) {
+              setTimeout(() => {
+                featuredSwipers[target].update();
+              }, 300);
+            }
           });
         } else {
           panel.classList.remove('active');
           panel.style.display = 'none';
         }
       });
-
-      // Reset horizontal scroll
-      const activeTrack = document.querySelector(`#${target} .fs-featured-track`);
-      if (activeTrack) activeTrack.scrollLeft = 0;
     });
   });
 
